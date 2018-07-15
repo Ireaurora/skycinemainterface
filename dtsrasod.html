@@ -68,7 +68,34 @@
     document.addEventListener("keydown", KeyDownHandler, false);
     document.addEventListener("keyup",KeyUpHandler, false);
 
-// this function creates the ball
+    //movement with the keyboard function
+
+    function KeyDownHandler(e) {
+        if(e.keyCode === 39) {
+            pressright = true;
+        }
+
+        else if (e.keyCode === 37) {
+            pressleft = true;
+        }
+    }
+
+    function KeyUpHandler(e) {
+        if (e.keyCode === 39) {
+
+            pressright = false;
+
+        }
+
+        else if (e.keyCode === 37) {
+
+            pressleft = false;
+
+        }
+    }
+
+
+    // this function creates the ball
 
     function game() {
         ctx.beginPath();
@@ -92,12 +119,12 @@
 
     function drawbriks() {
         for(var c=0; c<cbriks; c++) {
-        for(var r=0; r< rbriks; r++){
+            for (var r=0; r< rbriks; r++){
               if(briks[c][r].status === 1){
                 var brikY = (c*(brikh+brikpadding))+briktop;
-                var brikX = (c*(brikw+brikpadding))+brikleft;
-                briks[c][r].x = brikX ;
-                briks[c][r].y = brikY ;
+                var brikX = (r*(brikw+brikpadding))+brikleft;
+                briks[c][r].x = brikY ;
+                briks[c][r].y = brikX ;
                 ctx.beginPath();
                 ctx.rect(brikX,brikY,brikw,brikh);
                 ctx.fillstyle = randomcolor();
@@ -113,9 +140,9 @@
 
     function ballgame() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawbriks();
         game();
         gamerect();
-        drawbriks();
         detectcollision();
         
         if (y + dy < 0) {
@@ -145,20 +172,19 @@
 
         else if (y+ dy > canvas.height-ballr) {
 
-            if(x > rect && x < rect + rect_width) {
-                if(y=y-rect_height){
-                dy = -dy;
+            if (x > rect && x < rect + rect_width) {
+
+                    dy = -dy;
+                }
+
+                else {
+
+                    alert("game over");
+
+                    document.location.reload();
+
+                }
             }
-
-            else{
-
-                alert("game over");
-
-                document.location.reload();
-
-            }
-        }
-
 
         if(pressright && rect < canvas.width-rect_width) {
             rect += 7;
@@ -172,18 +198,7 @@
         x += dx;
         y += dy;
     }
-}
-//movement with the keyboard function
 
-    function KeyDownHandler(e) {
-        if(e.keyCode === 39) {
-            pressright = true;
-        }
-
-        else if (e.keyCode === 37) {
-            pressleft = true;
-        }
-    }
 
     // this function detects collision
 
@@ -203,20 +218,7 @@
       }
 
 
-    function KeyUpHandler(e) {
-        if (e.keyCode === 39) {
-
-            pressright = false;
-
-        }
-
-        else if (e.keyCode === 37) {
-
-            pressleft = false;
-
-        }
-    }
-
+    
 //setting the color of the briks to a random chosen color
 
    function randomcolor(){
