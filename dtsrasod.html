@@ -18,6 +18,7 @@
                 margin: 0 auto;
             }
 
+
         </style>
 
 
@@ -50,12 +51,15 @@
     var rect =(canvas.width-rect_width)/2;
 
     var cbriks = 3;
-    var rbriks = 5;
+    var rbriks = 4;
     var brikw = 75;
     var brikh = 20;
     var brikpadding = 10;
     var brikleft = 30;
     var briktop = 30;
+
+    var score = 0;
+    var lives = 5;
 
     var briks = [];
     for (var c=0; c<cbriks; c++) {
@@ -67,7 +71,10 @@
 
     document.addEventListener("keydown", KeyDownHandler, false);
     document.addEventListener("keyup",KeyUpHandler, false);
-    
+    document.addEventListener("mousemove",mouseMoveHandler, false);
+
+    //movement with the keyboard function
+
     function KeyDownHandler(e) {
         if(e.keyCode === 39) {
             pressright = true;
@@ -78,8 +85,7 @@
         }
     }
 
-    
-     function KeyUpHandler(e) {
+    function KeyUpHandler(e) {
         if (e.keyCode === 39) {
 
             pressright = false;
@@ -93,7 +99,54 @@
         }
     }
 
-// this function creates the ball
+    function mouseMoveHandler(e){
+        var relx = e.clientX - canvas.offsetLeft;
+        if(relx> 0 && relx < canvas.width) {
+           rect = relx - rect_width/2;
+        }
+    }
+    // this function detects collision
+
+    function detectcollision() {
+        for(var c=0; c<cbriks; c++) {
+            for(var r=0; r<rbriks; r++) {
+                var b = briks[c][r];
+                if(b.status === 1){
+                    if (x>b.x && x<b.x+ brikw &&  y> b.y && y<b.y+brikh){
+                        dy = -dy;
+                        b.status = 0;
+                        score++;
+                        if(score === rbriks*cbriks) {
+                            alert("You win!!" + congratulation());
+                            document.location.reload();
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    //this function calculates the score
+
+    function upscore() {
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "red";
+        ctx.fillText("Score" + score, 8, 20);
+    }
+
+    function uplives() {
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "red";
+        ctx.fillText("Lives:" + lives, canvas.width-65, 20);
+    }
+
+    function congratulation() {
+
+    }
+
+
+    // this function creates the ball
 
     function game() {
         ctx.beginPath();
@@ -116,11 +169,11 @@
 //this function creates the rectangles the ball has to hit
 
     function drawbriks() {
-        for(var c=0; cbriks; c++) {
+        for(var c=0; c<cbriks; c++) {
             for (var r=0; r< rbriks; r++){
               if(briks[c][r].status === 1){
                 var brikY = (c*(brikh+brikpadding))+briktop;
-                var brikX = (c*(brikw+brikpadding))+brikleft;
+                var brikX = (r*(brikw+brikpadding))+brikleft;
                 briks[c][r].x = brikX ;
                 briks[c][r].y = brikY ;
                 ctx.beginPath();
@@ -138,9 +191,11 @@
 
     function ballgame() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawbriks();
         game();
         gamerect();
-        drawbriks();
+        upscore();
+        uplives();
         detectcollision();
         
         if (y + dy < 0) {
@@ -170,20 +225,30 @@
 
         else if (y+ dy > canvas.height-ballr) {
 
-            if(x > rect && x < rect + rect_width) {
-                if(y=y-rect_height){
-                dy = -dy;
+            if (x > rect && x < rect + rect_width) {
+
+                    dy = -dy;
+                }
+
+                else {
+
+                   lives --;
+
+                   if(!lives) {
+                       alert("Game Over!");
+                       document.location.reload();
+
+                   }
+
+                    else {
+                       x = canvas.width/2;
+                       y = canvas.height-30;
+                       dx = 3;
+                       dy = -3;
+                       rect = (canvas.width-rect_width)/2;
+                   }
+                }
             }
-
-            else{
-
-                alert("game over");
-
-                document.location.reload();
-
-            }
-        }
-
 
         if(pressright && rect < canvas.width-rect_width) {
             rect += 7;
@@ -194,47 +259,28 @@
 
             rect -= 7;
         }
+
         x += dx;
         y += dy;
+
+        requestAnimationFrame(ballgame);
     }
-}
 
+    ballgame();
 
-    
-    // this function detects collision
-
-      function detectcollision() {
-          for(var c=0; c<cbriks; c++) {
-            for(var r=0; r<rbriks; r++) {
-              var b = briks[c][r];
-              if(b.status === 1){
-              if (x>b.x && x<b.x+ brikw &&  y> b.y && y<b.y+brikh){
-                dy = -dy;
-                b.status = 0;
-              }
-              }
-            }
-          }
-
-      }
-
-
-   
 
 //setting the color of the briks to a random chosen color
 
    function randomcolor(){
       var sign = "0123456789ABCDEF";
         var component = "#";
-        for (var i=0; i<6; i++)
-        {
-           component += sign[Math.floor(Math.random()*16)];
+        var i;
+        for ( i=0; i<6; i++)  {
+           component += sign[Math.floor(Math.random()*15)];
           }
-        document.output(component);
+
+        return component;
       }
-
-
-    setInterval(ballgame,10);
 
 
 </script>
