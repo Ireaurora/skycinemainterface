@@ -93,6 +93,24 @@
 
         }
     }
+    // this function detects collision
+
+    function detectcollision() {
+        for(var c=0; c<cbriks; c++) {
+            for(var r=0; r<rbriks; r++) {
+                var b = briks[c][r];
+                if(b.status === 1){
+                    if (x>b.x && x<b.x+ brikw &&  y> b.y && y<b.y+brikh){
+                        dy = -dy;
+                        b.status = 0;
+                    }
+                }
+            }
+        }
+
+    }
+
+
 
 
     // this function creates the ball
@@ -123,8 +141,8 @@
               if(briks[c][r].status === 1){
                 var brikY = (c*(brikh+brikpadding))+briktop;
                 var brikX = (r*(brikw+brikpadding))+brikleft;
-                briks[c][r].x = brikY ;
-                briks[c][r].y = brikX ;
+                briks[c][r].x = brikX ;
+                briks[c][r].y = brikY ;
                 ctx.beginPath();
                 ctx.rect(brikX,brikY,brikw,brikh);
                 ctx.fillstyle = randomcolor();
@@ -195,37 +213,20 @@
 
             rect -= 7;
         }
+
         x += dx;
         y += dy;
     }
 
 
-    // this function detects collision
 
-      function detectcollision() {
-          for(var c=0; c<cbriks; c++) {
-            for(var r=0; r<rbriks; r++) {
-              var b = briks[c][r];
-              if(b.status === 1){
-              if (x>b.x && x<b.x+ brikw &&  y> b.y && y<b.y+brikh){
-                dy = -dy;
-                b.status = 0;
-              }
-            }
-            }
-          }
-
-      }
-
-
-    
 //setting the color of the briks to a random chosen color
 
    function randomcolor(){
       var sign = "0123456789ABCDEF";
         var component = "#";
-        for (var i=0; i<6; i++)
-        {
+        var i;
+        for ( i=0; i<6; i++)  {
            component += sign[Math.floor(Math.random()*16)];
           }
         document.output(component);
