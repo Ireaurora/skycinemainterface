@@ -91,8 +91,8 @@
 //this function creates the rectangles the ball has to hit
 
     function drawbriks() {
-        for(var c=0; cbriks; c++) {
-            for (var r=0; r< rbriks; r++){
+        for(var c=0; c<cbriks; c++) {
+        for(var r=0; r< rbriks; r++){
               if(briks[c][r].status === 1){
                 var brikY = (c*(brikh+brikpadding))+briktop;
                 var brikX = (c*(brikw+brikpadding))+brikleft;
