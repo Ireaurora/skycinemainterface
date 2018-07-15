@@ -18,6 +18,7 @@
                 margin: 0 auto;
             }
 
+
         </style>
 
 
@@ -50,12 +51,15 @@
     var rect =(canvas.width-rect_width)/2;
 
     var cbriks = 3;
-    var rbriks = 5;
+    var rbriks = 4;
     var brikw = 75;
     var brikh = 20;
     var brikpadding = 10;
     var brikleft = 30;
     var briktop = 30;
+
+    var score = 0;
+    var lives = 5;
 
     var briks = [];
     for (var c=0; c<cbriks; c++) {
@@ -67,6 +71,7 @@
 
     document.addEventListener("keydown", KeyDownHandler, false);
     document.addEventListener("keyup",KeyUpHandler, false);
+    document.addEventListener("mousemove",mouseMoveHandler, false);
 
     //movement with the keyboard function
 
@@ -93,6 +98,13 @@
 
         }
     }
+
+    function mouseMoveHandler(e){
+        var relx = e.clientX - canvas.offsetLeft;
+        if(relx> 0 && relx < canvas.width) {
+           rect = relx - rect_width/2;
+        }
+    }
     // this function detects collision
 
     function detectcollision() {
@@ -103,6 +115,11 @@
                     if (x>b.x && x<b.x+ brikw &&  y> b.y && y<b.y+brikh){
                         dy = -dy;
                         b.status = 0;
+                        score++;
+                        if(score === rbriks*cbriks) {
+                            alert("You win!!" + congratulation);
+                            document.location.reload();
+                        }
                     }
                 }
             }
@@ -110,7 +127,23 @@
 
     }
 
+    //this function calculates the score
 
+    function upscore() {
+        ctx.font = "20px Arial";
+        ctx.fillstyle = "red";
+        ctx.fillText("Score" + score, 8, 20);
+    }
+
+    function uplives() {
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "red";
+        ctx.fillText= ("Lives:" + lives, canvas.width-65, 20);
+    }
+
+    function congratulation() {
+
+    }
 
 
     // this function creates the ball
@@ -118,7 +151,7 @@
     function game() {
         ctx.beginPath();
         ctx.arc(x, y, ballr, 0, Math.PI * 2);
-        ctx.fillStyle = "red";
+        ctx.fillstyle = "red";
         ctx.fill();
         ctx.closePath();
     }
@@ -128,7 +161,7 @@
     function gamerect() {
         ctx.beginPath();
         ctx.rect(rect, canvas.height-rect_height, rect_width,rect_height);
-        ctx.fillStyle= "white";
+        ctx.fillstyle= "white";
         ctx.fill();
         ctx.closePath();
     }
@@ -161,6 +194,8 @@
         drawbriks();
         game();
         gamerect();
+        upscore();
+        uplives();
         detectcollision();
         
         if (y + dy < 0) {
@@ -197,10 +232,21 @@
 
                 else {
 
-                    alert("game over");
+                   lives --;
 
-                    document.location.reload();
+                   if(!lives) {
+                       alert("Game Over!");
+                       document.location.reload();
 
+                   }
+
+                    else {
+                       x = canvas.width/2;
+                       y = canvas.height-30;
+                       dx = 3;
+                       dy = -3;
+                       rect = (canvas.width-rect_width)/2;
+                   }
                 }
             }
 
@@ -216,8 +262,11 @@
 
         x += dx;
         y += dy;
+
+        requestAnimationFrame(ballgame);
     }
 
+    ballgame();
 
 
 //setting the color of the briks to a random chosen color
@@ -229,11 +278,9 @@
         for ( i=0; i<6; i++)  {
            component += sign[Math.floor(Math.random()*15)];
           }
+
         return component;
       }
-
-
-    setInterval(ballgame,10);
 
 
 </script>
