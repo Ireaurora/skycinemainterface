@@ -17,7 +17,8 @@ In addition I created  “help” button that will remind the user of the comman
 
 
 NEXT STEPS:
--Linkthe genre chosen with the sky page listing the movies for that genre.
+
+-Link the genre chosen with the sky page listing the movies for that genre.
 
 -Create a file system containing all the new movies that Sky Cinema is offering. 
 
