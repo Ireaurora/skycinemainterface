@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSS Website Layout</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+        }
+        /* Style the header */
+        .header {
+            padding: 20px;
+            text-align: center;
+            bottom:5%;
+        }
+        /* Create three unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+        }
+        /* Left and right column */
+        .column.side {
+            width: 25%;
+        }
+        /* Middle column */
+        .column.middle {
+            width: 50%;
+        }
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+            .column.side, .column.middle {
+                width: 100%;
+            }
+        }
+        /* Style the footer */
+        .footer {
+            padding: 10px;
+            text-align: center;
+            width:100%;
+            position:fixed;
+            bottom:0 ;
+        }
+    </style>
+    <style>
+        #circle2
+        {
+            height: 300px;
+            width: 300px;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+            border:1px solid black;
+        }
+        #circle
+        {
+            height: 200px;
+            width: 200px;
+            background-color: white;
+            border-radius: 50%;
+            border:1px solid black;
+            position:absolute;
+            margin:-100px 0 0 -100px;
+            top:50%;
+            left:50%;
+        }
+        .circle-box{
+            height:100px;
+            width:100px;
+            position:absolute;
+            top:0;
+            left:0;
+            right:17%;
+            bottom:24%;
+            margin:auto;
+        }
+        .image1 {
+            position:absolute;
+            top:20%;
+            left: 80%;
+            width: 125px;
+            height:140px;
+            border: 2px solid white;
+            display:none;
+        }
+        .image2 {
+            position:absolute;
+            top:42%;
+            left: 80%;
+            width: 125px;
+            height:140px;
+            background-color:white;
+            border: 2px solid white;
+            display:none;
+        }
+        .image3 {
+            position:absolute;
+            top:64%;
+            left: 80%;
+            width: 125px;
+            height:140px;
+            background-color:white;
+            border: 2px solid white;
+            display:none;
+        }
+        /* Box design */
+        .box
+        {
+            width:500px;
+            height:75px;
+            border:1px solid black;
+            position:absolute;
+            right: 10.698%;
+            top: 5%;
+        }
+        /* Oval design*/
+        .oval {
+            height: 135px;
+            width: 200px;
+            border-radius: 50%;
+            border:1px solid white;
+            position:absolute;
+            right: 80%;
+            top: 5%;
+        }
+        h1 {
+            display: block;
+            font-size: 1.2em;
+            margin-left: 0.2em;
+            margin-right: 0;
+        }
+        .text {
+            margin-left: 0.2em;
+        }
+        .button {
+            padding: 6px 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            background-color: white;
+            color: black;
+            border: 2px solid #008CBA;
+        }
+    </style>
+    <script>
+        // Map
+        function myMap() {
+            var mapProp= {
+                center:new google.maps.LatLng(51.508742,-0.120850),
+                zoom:5
+            };
+            var map=new google.maps.Map(document.getElementById("section"),mapProp);
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxs6HML8cx2pMgd25LoqmqmypOlHlZImc&callback=myMap">
+
+    </script>
+
+
+    <script>
+
+        //Light Up Inner Circle using the letter "P"
+        document.addEventListener("keydown", function() {
+            if(event.keyCode === 80)
+                document.getElementById("circle").style.backgroundColor ="yellow"
+        });
+        //Light Up Outer Circle using the letter "M"
+        document.addEventListener("keydown", function() {
+            if(event.keyCode === 77)
+                document.getElementById("circle2").style.backgroundColor ="yellow"
+        });
+        //Light Up Border of Image1 using the letter "L"
+        document.addEventListener("keydown", function() {
+            if(event.keyCode === 76)
+                document.getElementById("image1").style.borderColor ="yellow"
+        });
+        //Light Up Border of Image1 using the letter "S"
+        document.addEventListener("keydown", function() {
+            if(event.keyCode === 83)
+                document.getElementById("image2").style.borderColor ="yellow"
+        });
+        //Light Up Border of Image1 using the letter "T"
+        document.addEventListener("keydown", function() {
+            if(event.keyCode === 84)
+                document.getElementById("image3").style.borderColor ="yellow"
+        });
+        //Help button if the user forgets the codes to light up
+        function myFunction1() {
+            alert("Lighting up function: \n Press 'P' to light up the inner circle \n Press 'M' to light up the outer circle \n Press 'L' to light up the top movie image \n Press 'S' to light up the middle movie image \n Press 'T' to light up the bottom movie image");
+        }
+
+
+
+        let myIndex = 0;
+        carousel();
+
+        function carousel() {
+            let i;
+            let x = document.getElementsByClassName("image1");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}
+            x[myIndex-1].style.display = "block";
+            setTimeout(carousel, 2000); // Change image every 2 seconds
+        }
+
+        function carousel2() {
+            let i;
+            let x = document.getElementsByClassName("image2");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}
+            x[myIndex-1].style.display = "block";
+            setTimeout(carousel, 2000); // Change image every 2 seconds
+        }
+
+        function carousel3() {
+            let i;
+            let x = document.getElementsByClassName("image3");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}
+            x[myIndex-1].style.display = "block";
+            setTimeout(carousel, 2000); // Change image every 2 seconds
+        }
+
+        carousel();
+        carousel2();
+        carousel3();
+    </script>
+
+</head>
+
+<body onload="myFunction1()">
+
+<div class="header">
+    <div class="box">
+        <h1>Choose a Genre</h1>
+        <a href="http://www.sky.com/tv/channel/skycinema/find-a-movie#/search?genre=family&window=skyCinema&certificate=all" class="text">Family</a>
+        <a href="http://www.sky.com/tv/channel/skycinema/find-a-movie#/search?genre=disney&window=skyCinema&certificate=all">Disney</a>
+        <a href="http://www.sky.com/tv/channel/skycinema/find-a-movie#/search?genre=romance&window=skyCinema&certificate=all">Action</a>
+        <a href="http://www.sky.com/tv/channel/skycinema/find-a-movie#/search?genre=horror&window=skyCinema&certificate=all">Sci-fi</a>
+        <a href="http://www.sky.com/tv/channel/skycinema/find-a-movie#/search?genre=comedy&window=skyCinema&certificate=all">Comedy</a>
+        <a href="http://www.sky.com/tv/channel/skycinema/find-a-movie#/search?genre=drama&window=skyCinema&certificate=all">Drama</a>
+        <a href="http://www.sky.com/tv/channel/skycinema/find-a-movie#/search?genre=thriller&window=skyCinema&certificate=all">Thriller</a>
+        <a href="http://www.sky.com/tv/channel/skycinema/find-a-movie#/search?genre=sci-fi&window=skyCinema&certificate=all">Sci-Fi</a>
+    </div>
+</div>
+
+<iframe
+        class="oval"
+        src="https://www.youtube.com/embed/Qy8PyJgwypo?playlist=Qy8PyJgwypo&loop=1&autoplay=1&controls=0">
+</iframe>
+
+<div class="row">
+    <div class="column side">
+        <div class="image1" >
+
+            <img src="im1.jpg">
+            <img src="im2.jpg">
+            <img src="im3.jpg">
+            <img src="im4.jpg">
+            <img src="im5.jpg">
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="column side">
+        <div class="image2" >
+
+            <img src="im1.jpg">
+            <img src="im2.jpg">
+            <img src="im3.jpg">
+            <img src="im4.jpg">
+            <img src="im5.jpg">
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="column side">
+        <div class="image3" >
+
+            <img src="im1.jpg">
+            <img src="im2.jpg">
+            <img src="im3.jpg">
+            <img src="im4.jpg">
+            <img src="im5.jpg">
+
+        </div>
+    </div>
+</div>
+
+    <div class="column middle">
+        <div class = "circle-box">
+
+            <div id="circle2">
+                <div id="circle">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="column side">
+        <!––Map on the left-hand side––>
+        <div id="section" style="position:absolute;
+            top:30%;
+            right: 80%;
+            width: 200px;
+            height: 350px;
+            border:1px solid white;">
+
+        </div>
+    </div>
+
+
+<div class="footer" align="bottom">
+    <p>Welcome to this new interface! If you forget the lighting up code, click
+        the "Help" button to review them!
+        <button class="button" onclick="myFunction1()">Help</button> </p>
+</div>
+
+
+</body>
+
+</html>
