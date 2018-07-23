@@ -18,11 +18,17 @@ In addition I created  “help” button that will remind the user of the comman
 COMMANDS:
 
 Lighting up function: 
+
 Press:
+
 'P' to light up the inner circle
+
 'M' to light up the outer circle
+
 'L' to light up the top movie image
+
 'S' to light up the middle movie image
+
 'T' to light up the bottom movie image
 
 NEXT STEPS:
