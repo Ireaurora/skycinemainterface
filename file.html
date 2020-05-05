@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>CSS Website Layout</title>
+    <title>Sky Cinema Interface</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -12,16 +12,12 @@
         body {
             margin: 0;
         }
-
         /* Style the header */
         .header {
             padding: 20px;
             text-align: center;
             bottom:5%;
         }
-
-
-
         /* Create three unequal columns that floats next to each other */
         .column {
             float: left;
@@ -85,8 +81,6 @@
             top:50%;
             left:50%;
         }
-
-
         .circle-box{
             height:100px;
             width:100px;
@@ -126,10 +120,7 @@
             background-color:white;
             border: 2px solid white;
         }
-
-
         /* Box design */
-
         .box
         {
             width:500px;
@@ -211,10 +202,8 @@
     </div>
     <div class="column middle">
         <div class = "circle-box">
-
             <div id="circle2">
                 <div id="circle">
-
                 </div>
             </div>
         </div>
@@ -231,15 +220,13 @@
         </div>
     </div>
 </div>
-
 <div class="footer" align="bottom">
     <p>Welcome to this new interface! If you forget the lightingup code, click
         the "Help" button to review them!
     <button class="button" onclick="myFunction1()">Help</button> </p>
 </div>
-
         <script>
-            // Map
+            // Map (google maps feature isn't free anymore
             function myMap() {
                 var mapProp= {
                     center:new google.maps.LatLng(51.508742,-0.120850),
@@ -248,11 +235,8 @@
                 var map=new google.maps.Map(document.getElementById("section"),mapProp);
             }
         </script>
-
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxs6HML8cx2pMgd25LoqmqmypOlHlZImc&callback=myMap">
-
         </script>
-
         <script>
             //Light Up Inner Circle using the letter "P"
             document.addEventListener("keydown", function() {
@@ -264,33 +248,26 @@
             document.addEventListener("keydown", function() {
                 if(event.keyCode === 77)
                     document.getElementById("circle2").style.backgroundColor ="yellow"
-
             });
             //Light Up Border of Image1 using the letter "L"
             document.addEventListener("keydown", function() {
                 if(event.keyCode === 76)
                     document.getElementById("image1").style.borderColor ="yellow"
-
             });
             //Light Up Border of Image1 using the letter "S"
             document.addEventListener("keydown", function() {
                 if(event.keyCode === 83)
                     document.getElementById("image2").style.borderColor ="yellow"
-
             });
             //Light Up Border of Image1 using the letter "T"
             document.addEventListener("keydown", function() {
                 if(event.keyCode === 84)
                     document.getElementById("image3").style.borderColor ="yellow"
-
             });
             //Help button if the user forgets the codes to light up
                   function myFunction1() {
             alert("Lighting up function: \n Press 'P' to light up the inner circle \n Press 'M' to light up the outer circle \n Press 'L' to light up the top movie image \n Press 'S' to light up the middle movie image \n Press 'T' to light up the bottom movie image");
         }
-
-            
         </script>
-
 </body>
 </html>
