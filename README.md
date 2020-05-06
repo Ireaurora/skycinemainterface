@@ -33,12 +33,8 @@ Lighting up function:
 
 NEXT STEPS:
 
--Link the genre chosen with the sky page listing the movies for that genre.
+-Add background
 
--Create a file system containing all the new movies that Sky Cinema is offering. 
-
--Provide the user with an interface where they could choose a genre 
-
--Using the Google Maps API, choose the location of where the chosen movie is set in.  This means that the user would be able to choose a family movie which was set in California.
+-Change youtube video
 
 -Add a slideshow in the initial page
