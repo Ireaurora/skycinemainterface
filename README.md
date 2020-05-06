@@ -1,4 +1,4 @@
-# skycinemainterface
+# Sky Cinema Interface
 
 
 I used HTML, CSS and JavaScript to create a web page which simulates the holographic devices used in futuristic films. 
@@ -19,7 +19,7 @@ COMMANDS:
 
 Lighting up function: 
 
-Press:
+# Press:
 
 'P' to light up the inner circle
 
