@@ -4,171 +4,150 @@
     <title>Sky Cinema Interface</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="sky.css">
     <style>
-        * {
-            box-sizing: border-box;
-        }
+                * { box-sizing: border-box;}
 
-        body {
-            margin: 0;
-        }
-        /* Style the header */
-        .header {
-            padding: 20px;
-            text-align: center;
-            bottom:5%;
-        }
-        /* Create three unequal columns that floats next to each other */
-        .column {
-            float: left;
-            padding: 10px;
-        }
+body { margin: 0; }
 
-        /* Left and right column */
-        .column.side {
-            width: 25%;
-        }
+.header {
+    padding: 20px;
+    text-align: center;
+    bottom:5%;
+}
 
-        /* Middle column */
-        .column.middle {
-            width: 50%;
-        }
+.column {
+    float: left;
+    padding: 10px;
+}
 
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
+.column.side { width: 25%;}
 
-        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-        @media screen and (max-width: 600px) {
-            .column.side, .column.middle {
-                width: 100%;
-            }
-        }
+.column.middle { width: 50%;}
 
-        /* Style the footer */
-        .footer {
-            padding: 10px;
-            text-align: center;
-            width:100%;
-            position:fixed;
-            bottom:0px;
-        }
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
-        </style>
-        <style>
-        #circle2
-        {
-            height: 300px;
-            width: 300px;
-            background-color: white;
-            border-radius: 50%;
-            position: relative;
-            border:1px solid black;
+@media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+        width: 100%;
+    }
+}
 
-        }
-        #circle
-        {
-            height: 200px;
-            width: 200px;
-            background-color: white;
-            border-radius: 50%;
-            border:1px solid black;
-            position:absolute;
-            margin:-100px 0px 0px -100px;
-            top:50%;
-            left:50%;
-        }
-        .circle-box{
-            height:100px;
-            width:100px;
-            position:absolute;
-            top:0;
-            left:0;
-            right:17%;
-            bottom:24%;
-            margin:auto;
-        }
+.footer {
+    padding: 10px;
+    text-align: center;
+    width:100%;
+    position:fixed;
+    bottom:0px;
+}
+#circle2
+{
+    height: 300px;
+    width: 300px;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+    border:1px solid black;
 
-        #image1 {
-            position:absolute;
-            top:20%;
-            left: 80%;
-            width: 125px;
-            height:140px;
-            border: 2px solid white;
-        }
+}
+#circle
+{
+    height: 200px;
+    width: 200px;
+    background-color: white;
+    border-radius: 50%;
+    border:1px solid black;
+    position:absolute;
+    margin:-100px 0px 0px -100px;
+    top:50%;
+    left:50%;
+}
+.circle-box{
+    height:100px;
+    width:100px;
+    position:absolute;
+    top:0;
+    left:0;
+    right:17%;
+    bottom:24%;
+    margin:auto;
+}
 
-        #image2 {
-            position:absolute;
-            top:42%;
-            left: 80%;
-            width: 125px;
-            height:140px;
-            background-color:white;
-            border: 2px solid white;
-        }
+#image1 {
+    position:absolute;
+    top:20%;
+    left: 80%;
+    width: 125px;
+    height:140px;
+    border: 2px solid white;
+}
 
-        #image3 {
-            position:absolute;
-            top:64%;
-            left: 80%;
-            width: 125px;
-            height:140px;
-            background-color:white;
-            border: 2px solid white;
-        }
-        /* Box design */
-        .box
-        {
-            width:500px;
-            height:75px;
-            border:1px solid black;
-            position:absolute;
-            right: 10.698%;
-            top: 5%;
-        }
+#image2 {
+    position:absolute;
+    top:42%;
+    left: 80%;
+    width: 125px;
+    height:140px;
+    background-color:white;
+    border: 2px solid white;
+}
 
-        /* Oval design*/
+#image3 {
+    position:absolute;
+    top:64%;
+    left: 80%;
+    width: 125px;
+    height:140px;
+    background-color:white;
+    border: 2px solid white;
+}
 
-        .oval {
-            height: 135px;
-            width: 200px;
-            border-radius: 50%;
-            border:1px solid white;
-            position:absolute;
-            right: 80%;
-            top: 5%;
-        }
+.box
+{
+    width:500px;
+    height:75px;
+    border:1px solid black;
+    position:absolute;
+    right: 10.698%;
+    top: 5%;
+}
+.oval {
+    height: 135px;
+    width: 200px;
+    border-radius: 50%;
+    border:1px solid white;
+    position:absolute;
+    right: 80%;
+    top: 5%;
+}
 
-        h1 {
-            display: block;
-            font-size: 1.2em;
-            margin-left: 0.2em;
-            margin-right: 0;
-        }
+h1 {
+    display: block;
+    font-size: 1.2em;
+    margin-left: 0.2em;
+    margin-right: 0;
+}
 
-        .text {
-            margin-left: 0.2em;
-        }
-        .button {
-            padding: 6px 8px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            background-color: white;
-            color: black;
-            border: 2px solid #008CBA;
-        }
+.text { margin-left: 0.2em;}
 
-        </style>
+.button {
+    padding: 6px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+}
+    </style>
 </head>
-<body>
 
 <body onload="myFunction1()">
 
@@ -194,11 +173,11 @@
 <div class="row">
     <div class="column side">
 
-        <img id="image1" alt="Security" src="im2.jpg">
+        <img id="image1" alt="Security" src="images/im2.jpg">
 
-        <img id="image2" alt="The Mountain Between Us" src="im3.jpg">
+        <img id="image2" alt="The Mountain Between Us" src="images/im3.jpg">
 
-        <img  id="image3" alt="Flatliners" src="im4.jpg">
+        <img  id="image3" alt="Flatliners" src="images/im4.jpg">
     </div>
     <div class="column middle">
         <div class = "circle-box">
