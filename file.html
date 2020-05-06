@@ -8,18 +8,15 @@
     <script src="sky.js"></script>
     <style>
 
-#circle2
-{
+#circle2{
     height: 300px;
     width: 300px;
     background-color: white;
     border-radius: 50%;
     position: relative;
     border:1px solid black;
-
 }
-#circle
-{
+#circle{
     height: 200px;
     width: 200px;
     background-color: white;
@@ -40,58 +37,17 @@
     bottom:24%;
     margin:auto;
 }
-
-#image1 {
+.image{
     position:absolute;
-    top:20%;
-    left: 80%;
     width: 125px;
     height:140px;
     border: 2px solid white;
-}
-
-#image2 {
-    position:absolute;
-    top:42%;
-    left: 80%;
-    width: 125px;
-    height:140px;
     background-color:white;
-    border: 2px solid white;
 }
-
-#image3 {
-    position:absolute;
-    top:64%;
-    left: 80%;
-    width: 125px;
-    height:140px;
-    background-color:white;
-    border: 2px solid white;
-}
-
-.box
-{
-    width:500px;
-    height:75px;
-    border:1px solid black;
-    position:absolute;
-    right: 10.698%;
-    top: 5%;
-}
-.oval {
-    height: 135px;
-    width: 200px;
-    border-radius: 50%;
-    border:1px solid white;
-    position:absolute;
-    right: 80%;
-    top: 5%;
-}
-    </style>
+</style>
 </head>
 
-<body onload="myFunction1()">
+<body onload="start()">
 
 <div class="header">
     <div class="box">
@@ -106,30 +62,24 @@
         <a href="http://www.sky.com/tv/channel/skycinema/find-a-movie#/search?genre=sci-fi&window=skyCinema&certificate=all" class="text">Sci-Fi</a>
     </div>
 </div>
-<iframe
-        class="oval"
-        src="https://www.youtube.com/embed/Qy8PyJgwypo?playlist=Qy8PyJgwypo&loop=1&autoplay=1&controls=0">
-</iframe>
-
+<iframe class="oval" src="https://www.youtube.com/embed/Qy8PyJgwypo?playlist=Qy8PyJgwypo&loop=1&autoplay=1&controls=0"> </iframe>
 <div class="row">
     <div class="column side">
-        <img id="image1" alt="Security" src="images/im2.jpg">
-        <img id="image2" alt="The Mountain Between Us" src="images/im3.jpg">
-        <img  id="image3" alt="Flatliners" src="images/im4.jpg">
+        <img id="image1" class="image" alt="Security" src="images/im2.jpg">
+        <img id="image2" class="image" alt="The Mountain Between Us" src="images/im3.jpg">
+        <img id="image3" class="image" alt="Flatliners" src="images/im4.jpg">
     </div>
     <div class="column middle">
         <div class = "circle-box">
             <div id="circle2">
-                <div id="circle">
-                </div>
+                <div id="circle"></div>
             </div>
         </div>
     </div>
 </div>
-<div class="footer" align="bottom">
-    <p>Welcome to this new interface! If you forget the lightingup code, click
-        the "Help" button to review them!
-    <button class="button" onclick="myFunction1()">Help</button> </p>
-</div>
+<footer>
+    <p>Welcome to this new interface! If you forget the lightingup code, click the "Help" button to review them!
+    <button class="button" onclick="start()">Help</button> </p>
+</footer>
 </body>
 </html>

@@ -26,8 +26,7 @@
                     document.getElementById("image3").style.borderColor ="yellow"
             });
             //Help button if the user forgets the codes to light up
-                  function myFunction1() {
-                      console.log("hello");
+                  function start() {
             alert("Lighting up function: \n Press 'P' to light up the inner circle \n Press 'M' to light up the outer circle \n Press 'L' to light up the top movie image \n Press 'S' to light up the middle movie image \n Press 'T' to light up the bottom movie image");
         }
     
